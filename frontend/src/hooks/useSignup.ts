@@ -8,7 +8,7 @@ export function useSignup() {
     
     return useMutation({
         mutationFn: (data: SignupInput) =>
-            api.post('https://blog.luharsujal2712.workers.dev/api/v1/user/signup', data),
+            api.post('/api/v1/user/signup', data),
         onSuccess: (response) => {
             localStorage.setItem('token', response.data.token)
             navigate({ to: '/blog' })
