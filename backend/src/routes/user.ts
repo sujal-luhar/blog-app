@@ -14,7 +14,7 @@ user.post('/signup', zValidator('json', signupSchema), async (c) => {
   const prisma = new PrismaClient({ accelerateUrl: c.env.DATABASE_URL }).$extends(withAccelerate())
 
   try {
-    const { email, name, password }: SignupInput = await c.req.json()  // ✅ fully typed, no @ts-ignore
+    const { email, name, password }: SignupInput = c.req.valid('json')  // ✅ fully typed, no @ts-ignore
 
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)

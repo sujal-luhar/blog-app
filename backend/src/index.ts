@@ -4,8 +4,11 @@ import { withAccelerate } from '@prisma/extension-accelerate'
 import { Bindings, AuthVariables } from './types'
 import user from './routes/user';
 import blog from './routes/blog';
+import { cors } from 'hono/cors';
 
 const app = new Hono<{ Bindings: Bindings, Variables: AuthVariables }>()
+
+app.use(cors())
 
 app.onError((error, c) => {
   console.error(`[global error] ${c.req.method} ${c.req.url}`, error)
