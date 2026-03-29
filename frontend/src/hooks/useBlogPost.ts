@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
+import api from '@/lib/axios'
 
 interface Post {
   id: string
@@ -18,9 +18,8 @@ export function useBlogPost(id: string) {
   return useQuery({
     queryKey: ['blog', id],
     queryFn: async () => {
-      const response = await axios.get<{ post: Post }>(
-        `https://blog.luharsujal2712.workers.dev/api/v1/blog/${id}`,
-        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+      const response = await api.get<{ post: Post }>(
+        `/api/v1/blog/${id}`,
       )
       return response.data.post
     },

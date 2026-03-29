@@ -1,7 +1,7 @@
-import axios from 'axios'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from '@tanstack/react-router'
 import { type UpdatePostInput } from '@sujalluhar/blog-common'
+import api from '@/lib/axios'
 
 export function useEditPost(postId: string) {
   const navigate = useNavigate()
@@ -9,9 +9,7 @@ export function useEditPost(postId: string) {
 
   return useMutation({
     mutationFn: (data: UpdatePostInput) =>
-      axios.put('https://blog.luharsujal2712.workers.dev/api/v1/blog', data, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-      }),
+      api.put('/api/v1/blog', data),
     onSuccess: () => {
       // ✅ invalidate cache so BlogPost shows fresh data
       queryClient.invalidateQueries({ queryKey: ['blog', postId] })

@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
+import api from '@/lib/axios'
 
 interface Post {
   id: string
@@ -27,9 +27,8 @@ export function useBlogList(page = 1, limit = 10) {
   return useQuery({
     queryKey: ['blogs', page, limit],   // ✅ cache key includes pagination
     queryFn: async () => {
-      const response = await axios.get<BlogListResponse>(
-        `https://blog.luharsujal2712.workers.dev/api/v1/blog/bulk?page=${page}&limit=${limit}`,
-        { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+      const response = await api.get<BlogListResponse>(
+        `/api/v1/blog/bulk?page=${page}&limit=${limit}`,
       )
       return response.data
     },

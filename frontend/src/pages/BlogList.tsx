@@ -54,7 +54,7 @@ export default function BlogList() {
                     <div>
                         <h1 className="text-3xl font-bold tracking-tight">Latest Posts</h1>
                         <p className="text-zinc-500 text-sm mt-1">
-                            {data?.meta.total ?? 0} stories published
+                            {data?.meta?.total ?? 0} stories published
                         </p>
                     </div>
                     <Link to="/blog/create">
@@ -91,7 +91,7 @@ export default function BlogList() {
                 )}
 
                 {/* Empty state */}
-                {!isLoading && !isError && data?.posts.length === 0 && (
+                {!isLoading && !isError && data?.posts?.length === 0 && (
                     <div className="flex flex-col items-center justify-center py-24 gap-3 text-center">
                         <PenLine className="w-10 h-10 text-zinc-600" />
                         <p className="text-zinc-400">No posts yet. Be the first to write!</p>
@@ -104,7 +104,7 @@ export default function BlogList() {
                 )}
 
                 {/* Posts */}
-                {!isLoading && !isError && data && data.posts.length > 0 && (
+                {!isLoading && !isError && data && data?.posts?.length > 0 && (
                     <>
                         <div className="space-y-4">
                             {data.posts.map((post) => (
@@ -113,7 +113,7 @@ export default function BlogList() {
                         </div>
 
                         {/* Pagination */}
-                        {data.meta.totalPages > 1 && (
+                        {data?.meta?.totalPages > 1 && (
                             <div className="flex items-center justify-center gap-4 mt-10">
                                 <Button
                                     variant="ghost"
@@ -126,13 +126,13 @@ export default function BlogList() {
                                 </Button>
 
                                 <span className="text-zinc-500 text-sm">
-                                    {page} / {data.meta.totalPages}
+                                    {page} / {data?.meta?.totalPages}
                                 </span>
 
                                 <Button
                                     variant="ghost"
                                     className="group text-zinc-400 hover:text-zinc-100 hover:bg-transparent gap-2 cursor-pointer transition-all duration-300 disabled:opacity-30"
-                                    disabled={page === data.meta.totalPages}
+                                    disabled={page === data?.meta?.totalPages}
                                     onClick={() => setPage(p => p + 1)}
                                 >
                                     Next
