@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && aws s3 sync dist/ s3://blog-app-fe-edge --delete && aws cloudfront create-invalidation --distribution-id EP73CQ2ZDBXEL --paths \"/*\""
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
