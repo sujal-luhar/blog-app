@@ -9,7 +9,7 @@ import { cors } from 'hono/cors';
 const app = new Hono<{ Bindings: Bindings, Variables: AuthVariables }>()
 
 app.use('*', cors({
-  origin: ['https://d1abc23def456.cloudfront.net'],
+  origin: ['https://dk2wxu79mqll8.cloudfront.net/'],
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
