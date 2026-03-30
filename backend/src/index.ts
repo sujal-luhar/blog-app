@@ -8,7 +8,12 @@ import { cors } from 'hono/cors';
 
 const app = new Hono<{ Bindings: Bindings, Variables: AuthVariables }>()
 
-app.use(cors())
+app.use('*', cors({
+  origin: ['https://d1abc23def456.cloudfront.net'],
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+}))
 
 app.onError((error, c) => {
   console.error(`[global error] ${c.req.method} ${c.req.url}`, error)
