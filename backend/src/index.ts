@@ -9,10 +9,11 @@ import { cors } from 'hono/cors';
 const app = new Hono<{ Bindings: Bindings, Variables: AuthVariables }>()
 
 app.use('*', cors({
-  origin: ['https://dk2wxu79mqll8.cloudfront.net/'],
-  allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: ['https://dk2wxu79mqll8.cloudfront.net'],
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
+  maxAge: 600,
 }))
 
 app.onError((error, c) => {
