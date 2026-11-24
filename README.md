@@ -3,7 +3,7 @@
 User
   ↓ HTTPS
 CloudFront (global CDN, edge caching)
-  ↓ private OAC
+  ↓ private OAC (Origin Access Control)
 S3 (stores dist/ files, not public)
   
 User → API calls → Cloudflare Workers (Hono backend)
