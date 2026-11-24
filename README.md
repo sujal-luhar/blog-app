@@ -8,6 +8,33 @@
 
 (NO AI USED TO WRITE THE BLOG)
 
+## Tech Stack:
+
+Frontend: 
+
+- React 19
+- TanStack Router/Query
+- Tailwind CSS
+- shadcn/Radix UI
+- Axios
+- Vite
+- TypeScript 
+
+Backend: 
+
+- Hono
+- Cloudflare Workers/Wrangler
+- Prisma ORM
+- Neon PostgreSQL
+- Zod
+- Bcrypt
+- PG
+
+Common: 
+
+A shared Zod-powered validation package (@sujalluhar/blog-common) for type-safe contracts across frontend and backend.
+Pushed this package to `npm registery`.
+
 ## Architecture
 ```
 User
