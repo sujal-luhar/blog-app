@@ -1,6 +1,6 @@
 ## LIVE AT: 
 
-### (LINK)[dk2wxu79mqll8.cloudfront.net/]
+**[LINK](dk2wxu79mqll8.cloudfront.net/)**
 
 ## Architecture
 ```
